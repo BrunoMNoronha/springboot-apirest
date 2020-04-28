@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -59,6 +60,7 @@ public class TopicosController {
 	
 	@PostMapping
 	@Transactional
+	@CacheEvict(value = "topicosIndex", allEntries = true)
 	public ResponseEntity<TopicoDTO> store(@RequestBody @Valid TopicoForm form, UriComponentsBuilder uriBuilder) {
 		
 		Topico topico = form.convert(cursoRepository);
@@ -81,8 +83,9 @@ public class TopicosController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@PutMapping("/{id}")
 	@Transactional
+	@PutMapping("/{id}")
+	@CacheEvict(value = "topicosIndex", allEntries = true)
 	public ResponseEntity<TopicoDTO> update(@PathVariable Long id, @RequestBody @Valid UpdateTopicoForm form) {
 		
 		Optional<Topico> optional = topicoRepository.findById(id);
@@ -96,8 +99,9 @@ public class TopicosController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@DeleteMapping("/{id}")
 	@Transactional
+	@DeleteMapping("/{id}")
+	@CacheEvict(value = "topicosIndex", allEntries = true)
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		
 		Optional<Topico> optional = topicoRepository.findById(id);
