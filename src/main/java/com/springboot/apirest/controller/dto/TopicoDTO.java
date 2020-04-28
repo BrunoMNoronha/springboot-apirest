@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+
 import com.springboot.apirest.model.Topico;
 
 public class TopicoDTO {
@@ -33,8 +35,8 @@ public class TopicoDTO {
 		return dataCriacao;
 	}
 
-	public static List<TopicoDTO> convert(List<Topico> topicos) {
-		return topicos.stream().map(TopicoDTO::new).collect(Collectors.toList());
+	public static Page<TopicoDTO> convert(Page<Topico> topicos) {
+		return topicos.map(TopicoDTO::new);
 	}
 	
 }
