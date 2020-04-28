@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,9 +43,10 @@ public class TopicosController {
 	private CursoRepository cursoRepository;
 	
 	@GetMapping
-	public Page<TopicoDTO> index(@RequestParam(required = false) String nomeCurso, @RequestParam int page, @RequestParam int size) {
+	public Page<TopicoDTO> index(@RequestParam(required = false) String nomeCurso,
+			@RequestParam int page,@RequestParam int size, @RequestParam String orderBy) {
 		
-		Pageable paginacao = PageRequest.of(page, size);
+		Pageable paginacao = PageRequest.of(page, size, Direction.ASC, orderBy);
 		
 		if (nomeCurso == null) {
 			Page<Topico> topicos = topicoRepository.findAll(paginacao);
