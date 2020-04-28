@@ -1,13 +1,21 @@
 package com.springboot.apirest.controller.form;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import com.springboot.apirest.model.Curso;
 import com.springboot.apirest.model.Topico;
 import com.springboot.apirest.repository.CursoRepository;
 
 public class TopicoForm {
 	
+	@NotNull @NotEmpty
 	private String titulo;
+	
+	@NotNull @NotEmpty
 	private String mensagem;
+	
+	@NotNull @NotEmpty
 	private String nomeCurso;
 	
 	public String getTitulo() {
