@@ -29,7 +29,7 @@ public class Topico {
 	@ManyToOne
 	private Curso curso;
 	@OneToMany(mappedBy = "topico")
-	private List<Resposta> resposta = new ArrayList<>();
+	private List<Resposta> respostas = new ArrayList<>();
 	
 	public Topico() {
 	}
@@ -82,13 +82,14 @@ public class Topico {
 	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
-	public List<Resposta> getResposta() {
-		return resposta;
+	public List<Resposta> getRespostas() {
+		return respostas;
 	}
-	public void setResposta(List<Resposta> resposta) {
-		this.resposta = resposta;
+
+	public void setRespostas(List<Resposta> respostas) {
+		this.respostas = respostas;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
