@@ -1,9 +1,5 @@
-# springboot-apirest
+# API Rest com Spring Boot
 
-Maven Project
-Java 14
-Packaging Jar
-
-Spring Boot 2.2.6
-Dependencies
-Spring Web 
+- Maven Project
+- JavaSE 14
+- Spring Boot 2.2.6
