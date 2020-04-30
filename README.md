@@ -9,5 +9,5 @@
 - [x] Melhorando desempenho com Spring Cache 
 - [x] Proteção com Spring Security
 - [x] Autenticação via JWT 
-- [_] Monitoramento com Spring Boot Actuator 
-- [_] Documentação da API com Swagger 
+- [ ] Monitoramento com Spring Boot Actuator 
+- [ ] Documentação da API com Swagger 
